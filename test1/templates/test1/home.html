@@ -1,0 +1,145 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- javascript plugin aos -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      .our-cards
+      {transition: 0.5s;}
+      .our-cards:hover
+      {transform: scale(1.02);}
+
+      .span-icons>a{
+        color:#393E46;
+      }
+      .span-icons{
+        transition: 2s;
+      }
+      
+
+      .span-icons>:first-child:hover{
+        color:blue;
+        transform: scale(1.5);
+      }
+      .span-icons>:nth-child(2):hover{
+        color:red;
+        transform: scale(1.5);
+      }
+      .span-icons>:nth-child(3):hover{
+        color:rgb(0, 0, 0);
+        transform: scale(1.5);
+      }.span-icons>:nth-child(4):hover{
+        color:rgb(255, 70, 101);
+        transform: scale(1.5);
+      }
+      .span-icons>:nth-child(5):hover{
+        color:#182fff;
+        transform: scale(1.5);
+      }
+      .span-icons>:nth-child(6):hover{
+        color:black;
+        transform: scale(1.5);
+      }
+
+      .container{
+        margin: 5%;
+    }
+      
+    </style>
+    
+</head>
+<body>
+    <!-- call the navbar.html file-->
+    {% include 'test1/navbar.html'%}
+    <!-- carousel section begin-->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="1000">
+            <img src="https://www.sterlingchevy.com/blogs/4320/wp-content/uploads/2022/08/pexels-afta-putta-gunawan-683039-scaled.jpg" class="d-block w-100" alt="im1" style="object-fit: cover;  height: 500px ;">
+            <div class="carousel-caption mb-0">
+              <h1>A Hot Cup of Happiness</h1>
+              <p>Behind every successful person is a subtantial amount of coffee.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src=" https://www.charlesfrazer.co.uk/wp-content/uploads/2020/08/DF14BA4D-3ADB-446E-B048-05A26C37EEB6.jpeg" class="d-block w-100" alt="im2" style="object-fit: cover; height: 500px;" >
+            <div class="carousel-caption mb-0">
+              <h1>Life is Better with Burger</h1>
+              <p>A good burger is worth its weight in gold.</p>
+            </div>
+          </div> 
+          <div class="carousel-item" data-bs-interval="2000">
+            <!-- <img src="https://b.zmtcdn.com/data/collections/54a38c33ce8c62c7754e3f0b2fa6eb60_1696100571.png" class="d-block w-100" alt="im3" style="object-fit: cover; height: 500px;"> -->
+            <img src="https://img.freepik.com/free-photo/steam-rises-as-coffee-cools-night-generated-by-ai_188544-10245.jpg?w=1060&t=st=1704917811~exp=1704918411~hmac=a1980017c663fd284094a1bf9de9b37f37da792722261a198cf8eb523b7f9b70" class="d-block w-100" alt="im3" style="object-fit: cover; height: 500px;">
+            <div class="carousel-caption mb-0">
+              <h1>Kitchen Seasoned with Love</h1>
+              <p>The fondest memories are made when gathered around the table.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+    <!-- carousel section ends here-->
+    <!-- card secrtion begins here -->
+    <div class="container mt-10">
+
+      <div class ="alert alert-primary text-center">
+        <h2>Our Products</h2>
+      </div>
+      {{ warning}}
+      <div class="row">
+
+        {% for x in product_info %}
+        <div class ="col-lg-4 col-md-6 col-12" data-aos="zoom-in" data-aos-duration="2000" >
+          <div class="card mt-2 our-cards "  > 
+            
+            <img src="{{x.product_img.url}}" class="card-img-top im-fluid" alt="..." style="max-width:100%; max-height:280px">
+            <div class="card-body">
+              <h5 class="card-title">{{x.product_name}}</h5>
+              <p class="card-text">{{x.product_description}}</p>
+              <a href="https://www.zomato.com/" target="_blank" class="btn btn-primary">{{x.product_category}}, {{x.product_id}}</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}        
+      </div>
+    </div>
+    <!-- card secrtion ends here -->
+    <!-- footer sections begins here -->
+    {% include 'test1/footer.html'%}
+    <!-- footer section ends here-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>   
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init(
+            {
+                offset:150,
+                duration: 1500
+            }
+        );
+    </script>
+</body>
+</html>
+
+
+<!-- {{x.product_img.url}} -->
+

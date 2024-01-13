@@ -1,0 +1,247 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body{
+            background: rgb(238,174,202);
+background: -moz-radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+background: -webkit-radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4 text-center">
+        <h2 class="alert alert-primary">Login Form</h2>
+        {% if error %}
+        <h3 class="alert alert-danger ">{{ error }}</h3>
+        {% endif %}
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>    
+
+</body>
+</html>
+
+  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+  <style>
+    body {
+      background: rgb(238, 174, 202);
+      background: -moz-radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca", endColorstr="#94bbe9", GradientType=1);
+      font-family: 'Roboto', sans-serif;
+      color: rgb(66, 66, 66);
+      
+    }
+
+    .Login {
+      justify-content: center;
+      align-items: center;
+      margin: 150px 150px;
+      /* box-sizing: border-box; */
+      box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, .1);
+      background-color: #eee6e6;
+      border-radius: 4px;
+      position: relative;
+      transition: all 1s;
+    }
+
+    .Login:hover{
+      transform: scale(1.01);
+    }
+
+    .username {
+      margin: 5%;
+    }
+
+    .password {
+      margin: 5%;
+    }
+
+    .hbtn {
+      /* padding: 10px 10px; */
+      padding-bottom: 20px;
+    }
+
+
+    
+    .big-div{
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+    }
+
+    input{
+     border-top: none;
+     border-left: none;
+     border-right: none;
+     background-color: #eee6e6;
+     border-color: pink;
+     font-size: 15px;
+     outline: none;
+    }
+
+    .alert {
+      font-weight: 700;
+    }
+
+
+    .button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.6em 1.7em;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  color: gray;
+}
+
+.button2:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #009087;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+  border: 1px solid #009087;
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container mt-4 text-center big-div">
+
+    {% if error %}
+        <h3 class="alert alert-danger ">{{ error }}</h3>
+        {% endif %}
+
+    <form method="post" action="">
+      {% csrf_token %}
+      <div class="Login">
+    
+
+
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/xzalkbkz.json"
+    trigger="loop"
+    delay="2000"
+    style="width:125px;height:125px">
+</lord-icon>
+
+        <h2 class="alert ">Login Form</h2>
+
+        
+        <div class="username">
+          <i class="fa-solid fa-user"></i>
+          <label for="">USERNAME : </label>
+          <input type="text" name="username" id=""  placeholder="Enter Your Name">
+        </div>
+
+
+        <div class="password">
+          <i class="fa-solid fa-lock"></i>
+          <label for="">PASSWORD :</label>
+          <input type="password" name="password" id="" placeholder="Enter Your Password">
+        </div>
+
+
+        <div class="hbtn">
+        
+          <button class="button2">Login</button>
+        </div>
+
+
+      </div>
+
+
+    </form>
+  </div> 
+
+</body>
+
+</html>
